@@ -9,7 +9,14 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     
     # BACKEND_CORS_ORIGINS is a comma-separated list of origins
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
+        "http://localhost:5137",
+        "http://localhost:50825",
+        "http://127.0.0.1:5137",
+        "http://127.0.0.1:50825",
+        "http://localhost",
+        "http://127.0.0.1"
+    ]
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: str | List[str]) -> List[str] | str:
