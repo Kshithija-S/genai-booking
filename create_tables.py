@@ -1,5 +1,5 @@
 from app.core.database import engine, Base
-from app.models.user import User  # Import all models here
+from app.models.device import Device  # Import all models here
 from app.core.config import settings
 import os
 
