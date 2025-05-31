@@ -5,7 +5,7 @@ from sqlalchemy import text
 
 from app.core.config import settings
 from app.core.database import engine, Base, get_db
-from app.api.endpoints import users, auth, devices
+from app.api.endpoints import users, auth, devices, bookings
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -30,6 +30,7 @@ app.add_middleware(
 app.include_router(users.router, prefix=f"{settings.API_V1_STR}/users", tags=["users"])
 app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/auth", tags=["auth"])
 app.include_router(devices.router, prefix=f"{settings.API_V1_STR}/devices", tags=["devices"])
+app.include_router(bookings.router, prefix=f"{settings.API_V1_STR}/bookings", tags=["bookings"])
 
 @app.get("/")
 async def root():
